@@ -1,0 +1,46 @@
+{
+  "name": "todo",
+  "description": "sample todo application",
+  "version": "1.0.0",
+  "license": "ISC",
+  "private": true,
+  "author": {
+    "name": "developer"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --mode development --hot",
+    "build": "rimraf dist && webpack --config ./config/webpack.prod.js --mode production"
+  },
+  "dependencies": {
+    "@angular/common": "6.0.6",
+    "@angular/compiler": "6.0.6",
+    "@angular/core": "6.0.6",
+    "@angular/forms": "6.0.6",
+    "@angular/platform-browser": "6.0.6",
+    "@angular/platform-browser-dynamic": "6.0.6",
+    "bootstrap": "3.3.7",
+    "core-js": "2.5.7",
+    "jquery": "3.3.1",
+    "rxjs": "6.2.1",
+    "zone.js": "0.8.26"
+  },
+  "devDependencies": {
+    "@types/node": "10.3.6",
+    "angular2-template-loader": "0.6.2",
+    "awesome-typescript-loader": "5.2.0",
+    "css-loader": "0.28.11",
+    "file-loader": "1.1.11",
+    "html-loader": "0.5.5",
+    "html-webpack-plugin": "3.2.0",
+    "mini-css-extract-plugin": "0.4.0",
+    "optimize-css-assets-webpack-plugin": "4.0.3",
+    "rimraf": "2.6.2",
+    "style-loader": "0.21.0",
+    "typescript": "2.7.2",
+    "uglifyjs-webpack-plugin": "1.2.7",
+    "webpack": "4.12.2",
+    "webpack-cli": "3.0.8",
+    "webpack-dev-server": "3.1.4",
+    "webpack-merge": "4.1.3"
+  }
+}

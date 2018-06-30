@@ -1,0 +1,6 @@
+<ul>
+    <li *ngFor="let todo of todoes">
+        <input type="checkbox" [checked]=todo.completed />
+        <a href="#">{{todo.title}}</a>
+    </li>
+</ul>

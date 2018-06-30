@@ -1,0 +1,14 @@
+.header {
+    background-image: url('../../images/header-pattern-v1.svg');
+    background-repeat: repeat-x;
+    padding: 10px 5px;
+    width: 100%;
+}
+
+.footer {
+    padding: 5px 15px !important;
+}
+
+.content ul {
+    list-style-type: none;
+}

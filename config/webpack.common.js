@@ -1,4 +1,5 @@
-var HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -47,16 +48,27 @@ module.exports = {
             loader: "style-loader"
           },
           {
-            loader: "css-loader",
-            options: {
-              module: true
-            }
+            loader: "css-loader"
+            // options: {
+            //   module: true
+            // }
           }
         ]
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
-        use: "file-loader?name=public/fonts/[name].[ext]"
+        test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: "url-loader?limit=10000"
+      },
+      {
+        test: /\.(ttf|eot)(\?[\s\S]+)?$/,
+        use: "file-loader"
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [
+          "file-loader?name=images/[name].[ext]",
+          "image-webpack-loader?bypassOnDebug"
+        ]
       }
     ]
   },
@@ -64,6 +76,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html"
+    }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
     })
   ],
 

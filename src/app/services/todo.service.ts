@@ -10,14 +10,14 @@ export class TodoService {
 
   constructor() {
     this.todoes = new Array<TodoModel>(
-      this.createTodo("Review pending"),
-      this.createTodo("Mail bank documents"),
-      this.createTodo("Complete the story tasks")
+      this.createTodo("Review pending", "Office"),
+      this.createTodo("Mail bank documents", "Personal"),
+      this.createTodo("Complete the story tasks", "Office")
     );
   }
 
-  private createTodo(title: string): TodoModel {
-    return { title: title, completed: false };
+  private createTodo(title: string, category: string): TodoModel {
+    return { title: title, completed: false, category: category };
   }
 
   get todoList(): Observable<Array<TodoModel>> {

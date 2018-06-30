@@ -1,5 +1,5 @@
-var webpackMerge = require("webpack-merge");
-var commonConfig = require("./webpack.common.js");
+const webpackMerge = require("webpack-merge");
+const commonConfig = require("./webpack.common.js");
 
 const path = require("path");
 const rootDir = path.resolve(__dirname, "..");

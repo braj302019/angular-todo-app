@@ -1,6 +1,9 @@
-<ul>
-    <li *ngFor="let todo of todoes">
-        <input type="checkbox" [checked]=todo.completed />
-        <a href="#">{{todo.title}}</a>
-    </li>
-</ul>
+<div>
+    <mat-card *ngFor="let todo of todoes">
+        <mat-card-header>
+            <mat-checkbox mat-card-avatar [(ngModel)]=todo.completed></mat-checkbox>
+            <mat-card-title> {{todo.title}}</mat-card-title>
+            <mat-card-subtitle>{{todo.category}}</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+</div>

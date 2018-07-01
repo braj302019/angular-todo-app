@@ -9,12 +9,26 @@ import { TodoService } from "../../services/todo.service";
 })
 export class TodoListComponent implements OnInit {
   private todoes: Array<TodoModel>;
-  constructor(@Inject(TodoService) private todoService: TodoService) {}
+
+  constructor(
+    @Inject(TodoService) private todoService: TodoService
+  ) {}
 
   ngOnInit(): void {
-    this.todoService.todoObservable.subscribe(() => {
-      this.todoes = this.todoService.todoList;
+    this.initSubscribers();
+    this.loadTodoes();
+  }
+
+  private initSubscribers(): void {
+    this.todoService.onTodoUpdate.subscribe(() => {
+      this.loadTodoes();
     });
+    this.todoService.onFilterByStatusChange.subscribe(() => {
+      this.loadTodoes();
+    });
+  }
+
+  private loadTodoes(): void {
     this.todoes = this.todoService.todoList;
   }
 

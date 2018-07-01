@@ -1,7 +1,6 @@
 import { TodoListComponent } from "./components/todo-list/todo-list.component";
 import { RootComponent } from "./components/root/app.component";
 import { TodoHeaderComponent } from "./components/todo-header/todo-header.component";
-import { TodoFooterComponent } from "./components/todo-footer/todo-footer.component";
 import { NgModule, Inject } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -14,6 +13,8 @@ import {
   MatIconRegistry
 } from "@angular/material";
 import { CommonModule } from "@angular/common";
+import { TodoActionsComponent } from "./components/todo-actions/todo-actions.component";
+import { TodoFooterComponent } from "./components/todo-footer/todo-footer.component";
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { CommonModule } from "@angular/common";
     RootComponent,
     TodoListComponent,
     TodoHeaderComponent,
+    TodoActionsComponent,
     TodoFooterComponent
   ],
   bootstrap: [RootComponent],

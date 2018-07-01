@@ -12,3 +12,7 @@
 .content ul {
     list-style-type: none;
 }
+
+.heading {
+    width: 100%;
+}

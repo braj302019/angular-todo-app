@@ -1,7 +1,7 @@
 <div>
     <mat-card *ngFor="let todo of todoes">
         <mat-card-header [class.completed]=todo.completed>
-            <mat-checkbox mat-card-avatar (ngModel)=todo.completed (click)=toggleTodoCompleted(todo.id)></mat-checkbox>
+            <mat-checkbox mat-card-avatar name="status" [(ngModel)]=todo.complted (change)=toggleTodoCompleted(todo.id)></mat-checkbox>
             <mat-card-title> {{todo.title}}</mat-card-title>
             <mat-card-subtitle>{{todo.category}}</mat-card-subtitle>
         </mat-card-header>

@@ -4,7 +4,8 @@ import { TodoHeaderComponent } from "./components/todo-header/todo-header.compon
 import { TodoFooterComponent } from "./components/todo-footer/todo-footer.component";
 import { NgModule, Inject } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NgbModule, NgbButtonsModule } from "@ng-bootstrap/ng-bootstrap";
 import {
   MatCheckboxModule,
   MatCardModule,
@@ -12,6 +13,7 @@ import {
   MatIconModule,
   MatIconRegistry
 } from "@angular/material";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   imports: [
@@ -20,7 +22,11 @@ import {
     MatCardModule,
     MatCheckboxModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    NgbModule.forRoot(),
+    NgbButtonsModule,
+    ReactiveFormsModule,
+    CommonModule
   ],
   declarations: [
     RootComponent,
@@ -32,7 +38,9 @@ import {
   providers: [MatIconRegistry]
 })
 export class AppModule {
-  constructor(@Inject(MatIconRegistry) public matIconRegistry: MatIconRegistry) {
+  constructor(
+    @Inject(MatIconRegistry) public matIconRegistry: MatIconRegistry
+  ) {
     matIconRegistry.registerFontClassAlias("fontawesome", "fa");
   }
 }

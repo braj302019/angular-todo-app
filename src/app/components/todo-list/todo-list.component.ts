@@ -4,7 +4,7 @@ import { TodoService } from "../../services/todo.service";
 
 @Component({
   selector: "todo-list",
-  templateUrl: './todo-list.component.html',
+  templateUrl: "./todo-list.component.html",
   styleUrls: ["./todo-list.component.css".toString()]
 })
 export class TodoListComponent implements OnInit {
@@ -12,10 +12,13 @@ export class TodoListComponent implements OnInit {
   constructor(@Inject(TodoService) private todoService: TodoService) {}
 
   ngOnInit(): void {
-    this.todoService.todoList.subscribe(todoes => this.todoes = todoes);
+    this.todoService.todoObservable.subscribe(() => {
+      this.todoes = this.todoService.todoList;
+    });
+    this.todoes = this.todoService.todoList;
   }
 
-  get todoList(): Array<TodoModel> {
-    return this.todoes;
+  toggleTodoCompleted(id: number): void {
+    this.todoService.toggleTodoCompleted(id);
   }
 }

@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -14,6 +15,14 @@ module.exports = {
 
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loaders: "babel-loader",
+        options: {
+          plugins: ["lodash"]
+        }
+      },
       {
         test: /\.ts$/,
         loaders: [
@@ -80,13 +89,18 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
-      "window.jQuery": "jquery"
+      "window.jQuery": "jquery",
+      _: "lodash"
+    }),
+    new LodashModuleReplacementPlugin({
+      collections: true
     })
   ],
 
   optimization: {
     splitChunks: {
       chunks: "all"
-    }
+    },
+    minimize: true
   }
 };

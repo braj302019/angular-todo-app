@@ -6,7 +6,10 @@ import { Component, OnInit, ViewEncapsulation } from "@angular/core";
   styleUrls: ["./todo-header.component.css".toString()]
 })
 export class TodoHeaderComponent implements OnInit {
-  constructor() {}
+  private today: Date;
+  constructor() {
+    this.today = new Date();
+  }
 
   ngOnInit(): void {
     

@@ -1,3 +1,18 @@
 <div>
-    <button mat-button><mat-icon fontSet="fa" fontIcon="fa-plus"></mat-icon>Add a to-do</button>
+    <button type="button" class="btn btn-outline-primary mr-2">
+        <mat-icon fontSet="fa" fontIcon="fa-plus"></mat-icon> Add a to-do
+    </button>
+    <form [formGroup]="filterByStatus" class="mt-2 formActions">
+        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" formControlName="status">
+            <label ngbButtonLabel class="btn-primary">
+                <input ngbButton type="radio" value="all"> All
+            </label>
+            <label ngbButtonLabel class="btn-primary">
+                <input ngbButton type="radio" value="pending"> Pending
+            </label>
+            <label ngbButtonLabel class="btn-primary">
+                <input ngbButton type="radio" value="completed"> Completed
+            </label>
+        </div>
+    </form>
 </div>

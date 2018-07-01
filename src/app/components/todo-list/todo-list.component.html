@@ -1,9 +1,23 @@
 <div>
-    <mat-card *ngFor="let todo of todoes">
-        <mat-card-header [class.completed]=todo.completed>
-            <mat-checkbox mat-card-avatar name="status" [(ngModel)]=todo.complted (change)=toggleTodoCompleted(todo.id)></mat-checkbox>
-            <mat-card-title> {{todo.title}}</mat-card-title>
-            <mat-card-subtitle>{{todo.category}}</mat-card-subtitle>
-        </mat-card-header>
+    <mat-card *ngFor="let todo of todoes" class="todo-card">
+        <div *ngIf="!isEditingStarted(todo.id);then list else edit"></div>
+        <ng-template #list>
+            <div class="btn-group pull-right card-actions">
+                <button type="button" class="btn btn-outline-primary" (click)=startTodoEditing(todo)>
+                    <mat-icon fontSet="fa" fontIcon="fa-edit"></mat-icon>
+                </button>
+                <button type="button" class="btn btn-outline-primary" (click)=removeTodo(todo.id)>
+                    <mat-icon fontSet="fa" fontIcon="fa-trash"></mat-icon>
+                </button>
+            </div>
+            <mat-card-header [class.completed]=todo.completed>
+                <mat-checkbox mat-card-avatar name="status" [(ngModel)]=todo.complted (change)=toggleTodoCompleted(todo.id)></mat-checkbox>
+                <mat-card-title> {{todo.title}}</mat-card-title>
+                <mat-card-subtitle>{{todo.category}}</mat-card-subtitle>
+            </mat-card-header>
+        </ng-template>
+        <ng-template #edit>
+            <todo-create [todo]=todo (cancelForm)=cancelEditing(todo.id) (submitForm)=updateTodo($event)></todo-create>
+        </ng-template>
     </mat-card>
 </div>

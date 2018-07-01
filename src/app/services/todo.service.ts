@@ -23,9 +23,9 @@ export class TodoService {
 
   private _init(): void {
     this.todoes = new Array<TodoModel>();
-    this.createTodo("Review pending", "Office");
-    this.createTodo("Mail bank documents", "Personal");
-    this.createTodo("Complete the story tasks", "Office");
+    this.createTodo(this.buildTodo("Review pending", "Office"));
+    this.createTodo(this.buildTodo("Mail bank documents", "Personal"));
+    this.createTodo(this.buildTodo("Complete the story tasks", "Office"));
   }
 
   get onTodoUpdate(): Observable<void> {
@@ -36,9 +36,24 @@ export class TodoService {
     return this.filterByStatusTopicObservable;
   }
 
-  createTodo(title: string, category: string): void {
-    this.todoes.push(this.buildTodo(title, category));
+  upsertTodo(todo: TodoModel): void {
+    if (todo.id == null) {
+      this.createTodo(todo);
+    } else {
+      this.updateTodo(todo);
+    }
     this.todoTopic.next();
+  }
+
+  private createTodo(todo: TodoModel): void {
+    todo.id = this.counter++;
+    this.todoes.push(todo);
+  }
+
+  private updateTodo(todo: TodoModel): void {
+    let existingTodo = _.find(this.todoes, td => td.id === todo.id);
+    existingTodo.title = todo.title;
+    existingTodo.category = todo.category;
   }
 
   private buildTodo(title: string, category: string): TodoModel {
@@ -52,6 +67,7 @@ export class TodoService {
 
   removeTodo(id: number): void {
     _.remove(this.todoes, todo => todo.id === id);
+    this.todoTopic.next();
   }
 
   toggleTodoCompleted(id: number): void {

@@ -5,6 +5,14 @@
     width: 100%;
 }
 
+.content {
+    min-height: 400px;
+}
+
+.sidenav {
+    padding: 15px;
+}
+
 .footer {
     padding: 5px 15px !important;
 }

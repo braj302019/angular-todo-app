@@ -5,8 +5,6 @@ import { Component, OnInit } from "@angular/core";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css".toString()]
 })
-export class RootComponent implements OnInit{
-    ngOnInit(): void {
-        
-    }
+export class RootComponent implements OnInit {
+  ngOnInit(): void {}
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "todo-header",
@@ -7,6 +7,7 @@ import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 })
 export class TodoHeaderComponent implements OnInit {
   private today: Date;
+  
   constructor() {
     this.today = new Date();
   }

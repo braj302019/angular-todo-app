@@ -1,3 +1,11 @@
 .completed {
     text-decoration: line-through;
 }
+
+.card-actions {
+    display: none !important;
+}
+
+.todo-card:hover .card-actions {
+    display: inline-block !important;
+}

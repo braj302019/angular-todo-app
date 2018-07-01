@@ -9,10 +9,9 @@ import { TodoService } from "../../services/todo.service";
 })
 export class TodoListComponent implements OnInit {
   private todoes: Array<TodoModel>;
+  private todoInEditMode: TodoModel;
 
-  constructor(
-    @Inject(TodoService) private todoService: TodoService
-  ) {}
+  constructor(@Inject(TodoService) private todoService: TodoService) {}
 
   ngOnInit(): void {
     this.initSubscribers();
@@ -32,7 +31,29 @@ export class TodoListComponent implements OnInit {
     this.todoes = this.todoService.todoList;
   }
 
-  toggleTodoCompleted(id: number): void {
+  private toggleTodoCompleted(id: number): void {
     this.todoService.toggleTodoCompleted(id);
   }
+
+  private removeTodo(id: number): void {
+    this.todoService.removeTodo(id);
+  }
+
+  private startTodoEditing(todo: TodoModel): void {
+    this.todoInEditMode = todo;
+  }
+
+  private updateTodo(todo: TodoModel): void {
+    this.todoService.upsertTodo(todo);
+    this.cancelEditing();
+  }
+
+  private cancelEditing(): void {
+    this.todoInEditMode = undefined;
+  }
+
+  private isEditingStarted(id: number): boolean {
+    return this.todoInEditMode && this.todoInEditMode.id === id;
+  }
+
 }

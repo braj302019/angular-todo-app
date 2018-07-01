@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, Inject, EventEmitter, Output } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { TodoService } from "../../services/todo.service";
 
@@ -9,6 +9,7 @@ import { TodoService } from "../../services/todo.service";
 })
 export class TodoActionsComponent implements OnInit {
   private filterByStatus: FormGroup;
+  @Output() toggleSideDrawer = new EventEmitter<void>();
 
   constructor(
     @Inject(FormBuilder) private formBuilder: FormBuilder,
@@ -16,11 +17,11 @@ export class TodoActionsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.intFilterByStatus();
+    this.initFilterByStatus();
     this.onChanges();
   }
 
-  private intFilterByStatus(): void {
+  private initFilterByStatus(): void {
     this.filterByStatus = this.formBuilder.group({
       status: "ALL"
     });
@@ -30,5 +31,9 @@ export class TodoActionsComponent implements OnInit {
     this.filterByStatus.get("status").valueChanges.subscribe(val => {
       this.todoService.filterByStatusChanged(val);
     });
+  }
+
+  private addNewTodo(): void{
+    this.toggleSideDrawer.emit();
   }
 }

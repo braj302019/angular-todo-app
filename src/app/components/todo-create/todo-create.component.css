@@ -1,7 +1,12 @@
 .create-form {
-    font-size: 0.825em;
+    margin-top: 10px;
+    font-size: 0.875em;
+}
+
+.form-group label {
+    width: 100%;
 }
 
 .hide {
-    display: none;
+    display: none !important;
 }

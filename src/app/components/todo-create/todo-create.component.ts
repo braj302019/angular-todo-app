@@ -9,6 +9,8 @@ import {
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { TodoService } from "../../services/todo.service";
 import { TodoModel } from "../../models/todo.model";
+import * as $ from "jquery";
+import * as _ from "lodash";
 
 @Component({
   selector: "todo-create",
@@ -37,6 +39,13 @@ export class TodoCreateComponent implements OnInit {
       category: [this.todo.category, Validators.required],
       completed: [this.todo.completed]
     });
+    this.focusOnTitle();
+  }
+
+  private focusOnTitle(): void {
+    _.defer(() => {
+      $('input[name="title"]').focus();
+    });
   }
 
   private onSubmit(): void {
@@ -58,7 +67,16 @@ export class TodoCreateComponent implements OnInit {
   }
 
   private clear(): void {
+    this.formGroup.get("id").setValue(undefined);
     this.formGroup.get("title").setValue("");
     this.formGroup.get("category").setValue("");
+    this.formGroup.get("completed").setValue(false);
+  }
+
+  editToto(todo: TodoModel): void {
+    this.formGroup.get("id").setValue(todo.id);
+    this.formGroup.get("title").setValue(todo.title);
+    this.formGroup.get("category").setValue(todo.category);
+    this.formGroup.get("completed").setValue(todo.completed);
   }
 }

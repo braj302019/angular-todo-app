@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, Inject, Output, EventEmitter } from "@angular/core";
 import { TodoModel } from "../../models/todo.model";
 import { TodoService } from "../../services/todo.service";
 
@@ -9,7 +9,7 @@ import { TodoService } from "../../services/todo.service";
 })
 export class TodoListComponent implements OnInit {
   private todoes: Array<TodoModel>;
-  private todoInEditMode: TodoModel;
+  @Output() editTodo = new EventEmitter<TodoModel>();
 
   constructor(@Inject(TodoService) private todoService: TodoService) {}
 
@@ -39,21 +39,8 @@ export class TodoListComponent implements OnInit {
     this.todoService.removeTodo(id);
   }
 
-  private startTodoEditing(todo: TodoModel): void {
-    this.todoInEditMode = todo;
-  }
-
   private updateTodo(todo: TodoModel): void {
-    this.todoService.upsertTodo(todo);
-    this.cancelEditing();
-  }
-
-  private cancelEditing(): void {
-    this.todoInEditMode = undefined;
-  }
-
-  private isEditingStarted(id: number): boolean {
-    return this.todoInEditMode && this.todoInEditMode.id === id;
+    this.editTodo.emit(todo);
   }
 
 }

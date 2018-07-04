@@ -1,3 +1,7 @@
+body {
+    font-size: 14px;
+}
+
 .header {
     background-image: url('../../images/header-pattern-v1.svg');
     background-repeat: repeat-x;
@@ -5,12 +9,12 @@
     width: 100%;
 }
 
-.content {
-    min-height: 400px;
+.sidenav {
+    min-width: 300px;
 }
 
-.sidenav {
-    padding: 15px;
+.content {
+    min-height: 400px;
 }
 
 .footer {
@@ -19,8 +23,4 @@
 
 .content ul {
     list-style-type: none;
-}
-
-.heading {
-    width: 100%;
 }

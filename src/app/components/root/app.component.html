@@ -1,22 +1,23 @@
 <div class="container">
     <mat-drawer-container class="drawer-container" autosize>
         <div class="main">
-            <mat-card>
-                <mat-card-header class="header">
-                    <todo-header class="heading"></todo-header>
-                    <todo-actions (toggleSideDrawer)=drawer.toggle()></todo-actions>
-                </mat-card-header>
-                <mat-card-content class="content">
-                    <todo-list></todo-list>
-                </mat-card-content>
-                <mat-card-actions class="footer">
-                    <todo-footer></todo-footer>
-                </mat-card-actions>
-            </mat-card>
+            <div class="container">
+                <div class="header row">
+                    <todo-header class="heading col-md-8"></todo-header>
+                    <todo-actions (toggleSideDrawer)=drawer.toggle() class="text-right col-md-4"></todo-actions>
+                </div>
+                <div class="content row">
+                    <todo-list class="col-md-12" (editTodo)=editTodo($event)></todo-list>
+                </div>
+                <div class="footer row">
+                    <todo-footer class="col-md-12"></todo-footer>
+                </div>
+            </div>
         </div>
-        <mat-drawer #drawer class="sidenav" mode="side">
-            <h6>Add a To-Do</h6>
-            <todo-create (submitForm)=drawer.close() (cancelForm)=drawer.close()></todo-create>
+        <mat-drawer #drawer class="sidenav" mode="over" position="end">
+            <div>
+                <todo-create #todoCreate (submitForm)=drawer.close() (cancelForm)=drawer.close()></todo-create>
+            </div>
         </mat-drawer>
     </mat-drawer-container>
 </div>

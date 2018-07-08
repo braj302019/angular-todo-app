@@ -1,6 +1,8 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CleanCSSLessPlugin = require("less-plugin-clean-css");
 
 module.exports = {
   entry: {
@@ -52,28 +54,40 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        use: [{ loader: MiniCssExtractPlugin.loader }, { loader: "css-loader" }]
+      },
+      {
+        test: /\.less$/,
+        exclude: /node_modules/,
         use: [
           {
-            loader: "style-loader"
+            loader: MiniCssExtractPlugin.loader
           },
           {
-            loader: "css-loader"
-            // options: {
-            //   module: true
-            // }
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              plugins: [new CleanCSSLessPlugin({ advanced: true })]
+            }
+          },
+          {
+            loader: "less-loader",
+            options: {
+              sourceMap: true
+            }
           }
         ]
       },
       {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: "url-loader?limit=10000"
+        use: "url-loader?name=fonts/[name].[ext]&limit=10000"
       },
       {
         test: /\.(ttf|eot)(\?[\s\S]+)?$/,
-        use: "file-loader"
+        use: "file-loader?name=fonts/[name].[ext]"
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
         use: [
           "file-loader?name=images/[name].[ext]",
           "image-webpack-loader?bypassOnDebug"
@@ -94,6 +108,9 @@ module.exports = {
     }),
     new LodashModuleReplacementPlugin({
       collections: true
+    }),
+    new MiniCssExtractPlugin({
+      filename: "styles/[name].css"
     })
   ],
 

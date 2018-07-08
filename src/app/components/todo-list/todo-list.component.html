@@ -1,11 +1,12 @@
-<div>
+<div class="todo-list-component">
     <mat-card *ngFor="let todo of todoes" class="todo-card">
         <div class="btn-group pull-right card-actions">
-            <button type="button" class="btn btn-outline-primary" placement="top" ngbTooltip="Edit" (click)=updateTodo(todo)>
+            <button type="button" class="btn btn-outline-secondary" placement="top" ngbTooltip="Edit" (click)=updateTodo(todo)>
                 <mat-icon fontSet="fa" fontIcon="fa-edit"></mat-icon>
             </button>
-            <button type="button" class="btn btn-outline-primary" placement="top" ngbTooltip="Remove" (click)=removeTodo(todo.id)>
+            <button type="button" class="btn btn-outline-secondary" placement="top" ngbTooltip="Remove" (click)=removeTodo(todo.id,removeTemplate)>
                 <mat-icon fontSet="fa" fontIcon="fa-trash"></mat-icon>
+                <dialog #removeDialog [title]="'Confirm Remove'" [message]="'Are you sure?'"></dialog>
             </button>
         </div>
         <mat-card-header [class.completed]=todo.completed>

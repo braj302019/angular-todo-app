@@ -9,10 +9,6 @@ import "rxjs";
 
 import "@angular/material";
 import "@angular/cdk";
-import "@angular/material/prebuilt-themes/purple-green.css";
 
 import "jquery";
 import "lodash/lodash.js";
-
-import "font-awesome/css/font-awesome.css";
-import "bootstrap/dist/css/bootstrap.css";

@@ -1,0 +1,15 @@
+.todo-list-component {
+  .completed {
+    text-decoration: line-through;
+  }
+  .todo-card {
+    .card-actions {
+      display: none !important;
+    }
+    &:hover {
+      .card-actions {
+        display: inline-block !important;
+      }
+    }
+  }
+}

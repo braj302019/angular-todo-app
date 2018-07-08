@@ -15,7 +15,7 @@ import * as _ from "lodash";
 @Component({
   selector: "todo-create",
   templateUrl: "./todo-create.component.html",
-  styleUrls: ["./todo-create.component.css".toString()]
+  styles: [require("./todo-create.component.less").toString()]
 })
 export class TodoCreateComponent implements OnInit {
   private formGroup: FormGroup;

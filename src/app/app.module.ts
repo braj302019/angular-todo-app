@@ -4,21 +4,20 @@ import { TodoHeaderComponent } from "./components/todo-header/todo-header.compon
 import { NgModule, Inject } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { NgbModule, NgbButtonsModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModule, NgbButtonsModule, NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
 import {
   MatCheckboxModule,
   MatCardModule,
-  MatButtonModule,
   MatIconModule,
   MatIconRegistry,
-  MatSidenavModule,
-  MatFormFieldModule
+  MatSidenavModule
 } from "@angular/material";
 import { CommonModule } from "@angular/common";
 import { TodoActionsComponent } from "./components/todo-actions/todo-actions.component";
 import { TodoFooterComponent } from "./components/todo-footer/todo-footer.component";
 import { TodoCreateComponent } from "./components/todo-create/todo-create.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { DialogComponent } from "./components/dialog/dialog.component";
 
 @NgModule({
   imports: [
@@ -26,10 +25,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     FormsModule,
     MatCardModule,
     MatCheckboxModule,
-    MatButtonModule,
     MatIconModule,
     NgbModule.forRoot(),
     NgbButtonsModule,
+    NgbModalModule,
     ReactiveFormsModule,
     CommonModule,
     MatSidenavModule,
@@ -41,7 +40,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     TodoHeaderComponent,
     TodoActionsComponent,
     TodoFooterComponent,
-    TodoCreateComponent
+    TodoCreateComponent,
+    DialogComponent
   ],
   bootstrap: [RootComponent],
   providers: [MatIconRegistry]

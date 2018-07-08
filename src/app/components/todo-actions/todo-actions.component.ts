@@ -5,7 +5,7 @@ import { TodoService } from "../../services/todo.service";
 @Component({
   selector: "todo-actions",
   templateUrl: "./todo-actions.component.html",
-  styleUrls: ["./todo-actions.component.css".toString()]
+  styles: [require("./todo-actions.component.less").toString()]
 })
 export class TodoActionsComponent implements OnInit {
   private filterByStatus: FormGroup;

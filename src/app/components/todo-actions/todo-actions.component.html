@@ -1,16 +1,16 @@
 <div>
-    <button type="button" class="btn btn-primary" (click)=addNewTodo()>
+    <button type="button" class="btn btn-default" (click)=addNewTodo()>
         <mat-icon fontSet="fa" fontIcon="fa-plus"></mat-icon> Add a to-do
     </button>
     <form [formGroup]="filterByStatus" class="mt-2">
         <div class="btn-group btn-group-toggle" ngbRadioGroup name="status" formControlName="status">
-            <label ngbButtonLabel class="btn-primary">
+            <label ngbButtonLabel class="btn-secondary">
                 <input ngbButton type="radio" value="ALL"> All
             </label>
-            <label ngbButtonLabel class="btn-primary">
+            <label ngbButtonLabel class="btn-secondary">
                 <input ngbButton type="radio" value="PENDING"> Pending
             </label>
-            <label ngbButtonLabel class="btn-primary">
+            <label ngbButtonLabel class="btn-secondary">
                 <input ngbButton type="radio" value="COMPLETED"> Completed
             </label>
         </div>

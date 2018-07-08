@@ -1,4 +1,4 @@
-<div class="create-form">
+<div class="create-form todo-create-component">
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="container">
         <div class="form-group hide">
             <input class="form-control" formControlName="id">
@@ -17,7 +17,7 @@
             </label>
         </div>
         <div>
-            <button type="button" class="btn btn-primary mr-2" (click)=onSubmit() [disabled]=!formGroup.valid>Submit</button>
+            <button type="button" class="btn btn-default mr-2" (click)=onSubmit() [disabled]=!formGroup.valid>Submit</button>
             <button type="button" class="btn btn-secondary" (click)=cancel()>Cancel</button>
         </div>
     </form>

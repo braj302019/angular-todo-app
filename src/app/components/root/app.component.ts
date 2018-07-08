@@ -6,7 +6,7 @@ import { TodoCreateComponent } from "../todo-create/todo-create.component";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css".toString()]
+  styles: [require("./app.component.less").toString()]
 })
 export class RootComponent implements OnInit {
   @ViewChild("drawer") drawer: MatDrawer;

@@ -5,7 +5,7 @@ import { TodoService } from "../../services/todo.service";
 @Component({
   selector: "todo-footer",
   templateUrl: "./todo-footer.component.html",
-  styleUrls: ["./todo-footer.component.css".toString()]
+  styles: [require("./todo-footer.component.less").toString()]
 })
 export class TodoFooterComponent implements OnInit {
   private pendingItems:number;
